@@ -167,8 +167,11 @@ class TN_LDPC_Decoder:
         self.main_comp_finder_par = main_comp_finder_par
 
     def decode(self, entry):
-        output = classical_ldpc_decoding(
-            entry, self.checks, self.decoder_par, self.svd_function_par, self.main_comp_finder_par)
+        try:
+            output = classical_ldpc_decoding(
+                entry, self.checks, self.decoder_par, self.svd_function_par, self.main_comp_finder_par)
+        except:
+            output = None
         return output
 
 

@@ -118,8 +118,9 @@ def reverse_checks(matrix):
     while mat_antitrace is None:
         if bs > max_bs:
             mat_antitrace = False
-        mat_antitrace = trace_vs_antitrace(matrix, block_size=bs)
-        bs += 1
+        else:
+            mat_antitrace = trace_vs_antitrace(matrix, block_size=bs)
+            bs += 1
 
     if mat_antitrace:
         for i in range(len(matrix[0, :])):

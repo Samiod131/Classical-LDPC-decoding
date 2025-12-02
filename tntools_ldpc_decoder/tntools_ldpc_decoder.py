@@ -107,8 +107,8 @@ def classical_ldpc_decoding(entry, checks, decoder_par, svd_function_par, main_c
             state_mps.mpo_contract(c_mpo, begin)
 
         # check for nans and infs in array
-        NanInf, _ = state_mps.nans_infs_find()
-        if NanInf is True:
+        NanInf = state_mps.nans_infs_find()
+        if NanInf:
             warnings.warn(
                 'Final mps is invalid (NANs or infs). Try again with less approximative svd function.')
             main_comp = None

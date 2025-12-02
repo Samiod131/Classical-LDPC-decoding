@@ -1,27 +1,11 @@
+import copy
 import json
 
 import numpy as np
 
-import utils
-
 """
 File edit and params utils.
 """
-
-def results_saving(results, filename='results.txt'):
-    '''
-    Saves all params and results to a txt file. 
-    '''
-    # Unpackig each sub_dictionnary
-    labels = []
-    values = []
-    for sub_dict in results.values():
-        labels = labels+list(sub_dict.keys())
-        values = values+list(sub_dict.values())
-
-    save_to_file(parameters=values, filename=filename, header=labels)
-
-    return labels, values
 
 
 def save_to_file(parameters, filename, header=False, path='./', buffer=20):
@@ -102,6 +86,27 @@ def import_data_file(path_to_file, header=True):
     return data
 
 
+def save_results(results, filename='results.txt'):
+    '''
+    Saves all params and results to a txt file. 
+    '''
+    # Unpackig each sub_dictionnary
+    labels = []
+    values = []
+    for sub_dict in results.values():
+        labels = labels+list(sub_dict.keys())
+        values = values+list(sub_dict.values())
+
+    save_to_file(parameters=values, filename=filename, header=labels)
+
+    return labels, values
+
+
+"""
+Dictionnary job list handling. 
+"""
+
+
 def generate_all_batches_lists(large_file):
     '''
     Returns a list of lists of all the parameters values, one for each intended
@@ -150,7 +155,7 @@ def gen_dict_from_lists(large_file, params_lists):
     return full_dicts
 
 
-def create_params_dict_list(file_from='batch_params.json', file_to='param_dict_list.json'):
+def get_params_dict_list(file_from='batch_params.json'):
     '''
     Takes a dictionnary of parameter value lists and return all possible
     combinations set of parameters values in a list of dictionnaries. 
@@ -158,11 +163,8 @@ def create_params_dict_list(file_from='batch_params.json', file_to='param_dict_l
     with open(file_from) as myfile:
         params = json.load(myfile)
 
-    # Generate the list of dictionnary
+    # Generate the list of dictionnaries
     params_lists = generate_all_batches_lists(params)
     full_dict = gen_dict_from_lists(params, params_lists)
 
-    # Overwrite previous json file with same name and closes it
-    out_file = open(file_to, "w")
-    json.dump(full_dict, out_file, indent=4)
-    out_file.close()
+    return full_dict

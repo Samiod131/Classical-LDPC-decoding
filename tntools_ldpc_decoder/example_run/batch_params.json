@@ -1,15 +1,6 @@
 {
-    "code_selector": {
-        "bit_degree": [
-            3
-        ],
-        "check_degree": [
-            4
-        ],
-        "code_size_mult": [
-            2,3,4
-        ],
-        "phys_err_rt": [
+    "general_params": {
+        "phys_error_rate": [
             0,
             0.1,
             0.13,
@@ -26,16 +17,27 @@
             0.5,
 	    0.7
         ],
-        "num_times": [
+        "samples": [
             100
         ]
     },
-    "decoder_par": {
+    "code_params": {
+        "bit_degree": [
+            3
+        ],
+        "check_degree": [
+            4
+        ],
+        "n_mult": [
+            2,3,4
+        ]
+    },
+    "decoder_params": {
         "b_prob": [
             0.1
         ]
     },
-    "svd_function_par": {
+    "svd_params": {
         "max_len": [
             128
         ],
@@ -55,8 +57,8 @@
             true
         ]
     },
-    "main_comp_finder_par": {
-        "extract": [
+    "main_comp_params": {
+        "type": [
             "dephased_DMRG"
         ],
         "chi_max": [

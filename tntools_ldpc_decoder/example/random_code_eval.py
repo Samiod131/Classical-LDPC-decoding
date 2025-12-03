@@ -55,7 +55,7 @@ def code_select(bit_degree, check_degree, n_mult):
     return ldpc_code
 
 
-def new_run_func(code_params, general_params, decoder_params, svd_params, main_comp_params):
+def run_decoding(code_params, general_params, decoder_params, svd_params, main_comp_params):
     '''
     Run one serie of experience for a set of parameters and returns the required
     parameters results in a dictionnary format.

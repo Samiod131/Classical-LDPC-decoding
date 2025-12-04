@@ -1,4 +1,5 @@
-# Classical-LDPC-decoding
+# TNTools_LDPC_Decoder
+
 Approximative Classical LDPC decoder using the [TNTools](https://github.com/Samiod131/TNTools).
 
 
